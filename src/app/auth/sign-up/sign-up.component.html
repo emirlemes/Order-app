@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+      <h2>Sign Up</h2>
+      <mat-error *ngIf="!loginValid">
+        The username and password were not recognized
+      </mat-error>
+      <mat-form-field>
+        <input matInput placeholder="Email" [formControl]="email" name="username" required>
+        <mat-error>
+          Please provide a valid email address
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" [formControl]="password" name="password" required>
+        <mat-error>
+          Please provide a valid password
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password again" [formControl]="passwordAgain" name="passwordAgain"
+          required>
+        <mat-error>
+          Passwords don't match.
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" [disabled]="!signUpForm.valid">Sign Up</button>
+    </form>
+    <p style="padding:15px">Already have an account?.<a routerLink="../login">Log In</a></p>
+  </mat-card-content>
+</mat-card>
