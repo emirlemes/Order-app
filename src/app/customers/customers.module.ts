@@ -1,18 +1,20 @@
-import { NgModule } from "@angular/core";
-import { RouterModule } from "@angular/router";
-import { FormsModule } from "@angular/forms";
+import { NgModule } from '@angular/core'
+import { RouterModule } from '@angular/router'
+import { FormsModule } from '@angular/forms'
 
-import { SharedModule } from "../shared/shared.module";
-import { CustomersListComponent } from "./customers-list/customers-list.component";
-import { CustomersDetailComponent } from "./customers-detail/customers-detail.component";
-import { CustomersRoutingModule } from "./customers-router.module";
-import { CustomerItemComponent } from "./customers-list/customer-item/customer-item.component";
+import { SharedModule } from '../shared/shared.module'
+import { CustomersComponent } from './customers.component'
+import { CustomersListComponent } from './customers-list/customers-list.component'
+import { CustomersDetailComponent } from './customers-detail/customers-detail.component'
+import { CustomersRoutingModule } from './customers-router.module'
+import { CustomerItemComponent } from './customers-list/customer-item/customer-item.component'
 
 @NgModule({
   declarations: [
     CustomersListComponent,
     CustomersDetailComponent,
-    CustomerItemComponent
+    CustomerItemComponent,
+    CustomersComponent,
   ],
   imports: [
     RouterModule,
@@ -22,6 +24,4 @@ import { CustomerItemComponent } from "./customers-list/customer-item/customer-i
   ]
 })
 
-export class CustomersModule {
-
-}
+export class CustomersModule { }

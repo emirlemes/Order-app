@@ -1,8 +1,8 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router"
-import { AuthGuard } from "../auth/auth.guard";
-import { OrderDetailComponent } from "./order-detail/order-detail.component";
-import { OrdersComponent } from "./orders.component";
+import { NgModule } from '@angular/core'
+import { RouterModule, Routes } from '@angular/router'
+import { AuthGuard } from '../auth/auth.guard'
+import { OrderDetailComponent } from './order-detail/order-detail.component'
+import { OrdersComponent } from './orders.component'
 
 const routes: Routes = [
   {

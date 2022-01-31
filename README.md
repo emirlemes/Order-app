@@ -25,3 +25,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Design Reference
+
+[Design](https://dribbble.com/shots/1914473/attachments/1914473-Dashboard-2-Orderhive?mode=media)

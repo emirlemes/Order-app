@@ -1,9 +1,9 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router"
-import { AuthGuard } from "../auth/auth.guard";
-import { CustomersDetailComponent } from "./customers-detail/customers-detail.component";
-import { CustomersListComponent } from "./customers-list/customers-list.component";
-import { CustomersComponent } from "./customers.component";
+import { NgModule } from '@angular/core'
+import { RouterModule, Routes } from '@angular/router'
+import { AuthGuard } from '../auth/auth.guard'
+import { CustomersDetailComponent } from './customers-detail/customers-detail.component'
+import { CustomersListComponent } from './customers-list/customers-list.component'
+import { CustomersComponent } from './customers.component'
 
 const routes: Routes = [
   {

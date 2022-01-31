@@ -31,3 +31,12 @@
 .submenu.expanded {
   transform: scaleY(1);
 }
+
+.side-mat-list-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 4px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}

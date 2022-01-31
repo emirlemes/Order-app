@@ -3,21 +3,21 @@ import { RouterModule } from '@angular/router'
 import { FormsModule } from '@angular/forms'
 
 import { SharedModule } from '../shared/shared.module'
-import { DashboardRoutingModule } from './dashboard-routing.module'
-import { DashboardComponent } from './dashboard.component'
+import { ReportsRoutingModule } from './reports-routing.module'
+import { ReportsComponent } from './reports.component'
 
 @NgModule({
   declarations: [
-    DashboardComponent,
+    ReportsComponent,
   ],
   imports: [
     RouterModule,
     FormsModule,
-    DashboardRoutingModule,
+    ReportsRoutingModule,
     SharedModule
   ]
 })
 
-export class DashboardModule {
+export class ReportsModule {
 
 }

@@ -1,12 +1,12 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
-import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { catchError, map, of, switchMap, tap } from "rxjs";
-import { environment } from "src/environments/environment";
-import { AuthService } from "../auth.service";
-import { User } from "../user.model";
-import * as AuthActions from "./auth.actions";
+import { HttpClient, HttpErrorResponse } from '@angular/common/http'
+import { Injectable } from '@angular/core'
+import { Router } from '@angular/router'
+import { Actions, createEffect, ofType } from '@ngrx/effects'
+import { catchError, map, of, switchMap, tap } from 'rxjs'
+import { environment } from 'src/environments/environment'
+import { AuthService } from '../auth.service'
+import { User } from '../user.model'
+import * as AuthActions from './auth.actions'
 
 export interface AuthResponse {
   idToken: string;
@@ -20,7 +20,7 @@ export interface AuthResponse {
 
 @Injectable()
 export class AuthEffects {
-  url: string = "https://identitytoolkit.googleapis.com/v1/accounts"
+  url = 'https://identitytoolkit.googleapis.com/v1/accounts'
   key: string = environment.api_key
 
   constructor(private actions$: Actions, private http: HttpClient, private router: Router, private authService: AuthService) { }
@@ -65,9 +65,9 @@ export class AuthEffects {
   authAutoLogin = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.autoLogin),
     map(() => {
-      const user = JSON.parse(localStorage.getItem("userData") || "null")
+      const user = JSON.parse(localStorage.getItem('userData') || 'null')
 
-      if (!user) { return { type: "DUMMY" } }
+      if (!user) { return { type: 'DUMMY' } }
 
       const storageUser = new User(
         user.email,
@@ -75,10 +75,10 @@ export class AuthEffects {
         user._token,
         new Date(user._tokenExpirationDate))
 
-      if (!storageUser.token) { return { type: "DUMMY" } }
+      if (!storageUser.token) { return { type: 'DUMMY' } }
 
       const expirationDate = new Date(user._tokenExpirationDate).getTime() - new Date().getTime()
-      // this.authService.setLogoutTimer(expirationDate)
+      this.authService.setLogoutTimer(expirationDate)
 
       return AuthActions.authenticateSuccess({
         email: storageUser.email,
@@ -99,35 +99,35 @@ export class AuthEffects {
   authLogOutClear = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.logOutAction),
     tap(() => {
-      // this.authService.clearLogoutTimer()
+      this.authService.clearLogoutTimer()
       localStorage.removeItem('userData')
       this.router.navigate(['/auth'])
     })), { dispatch: false })
 
 
   private handleError(errorResponse: HttpErrorResponse) {
-    let errorMessage = "Unknown error occurred"
-    console.log(errorResponse);
+    let errorMessage = 'Unknown error occurred'
+    console.log(errorResponse)
     if (!errorResponse.error || !errorResponse.error.error) {
       return errorMessage
     }
 
     switch (errorResponse.error.error.message) {
-      case "EMAIL_EXISTS": errorMessage = "Email already exists"; break
-      case "OPERATION_NOT_ALLOWED":
-        errorMessage = "Password sign-in is disabled for this project.";
+      case 'EMAIL_EXISTS': errorMessage = 'Email already exists'; break
+      case 'OPERATION_NOT_ALLOWED':
+        errorMessage = 'Password sign-in is disabled for this project.'
         break
-      case "TOO_MANY_ATTEMPTS_TRY_LATER":
-        errorMessage = "We have blocked all requests from this device due to unusual activity. Try again later.";
+      case 'TOO_MANY_ATTEMPTS_TRY_LATER':
+        errorMessage = 'We have blocked all requests from this device due to unusual activity. Try again later.'
         break
-      case "EMAIL_NOT_FOUND":
-        errorMessage = "Email not found please sign up first";
+      case 'EMAIL_NOT_FOUND':
+        errorMessage = 'Email not found please sign up first'
         break
-      case "INVALID_PASSWORD":
-        errorMessage = "Password is not valid";
+      case 'INVALID_PASSWORD':
+        errorMessage = 'Password is not valid'
         break
-      case "USER_DISABLED":
-        errorMessage = "The account has been disabled by an administrator.";
+      case 'USER_DISABLED':
+        errorMessage = 'The account has been disabled by an administrator.'
         break
     }
     return errorMessage
@@ -136,10 +136,10 @@ export class AuthEffects {
   private handleAuthResponse(resData: AuthResponse) {
     const expireDate = new Date(new Date().getTime() + (+resData.expiresIn * 1000))
 
-    // this.authService.setLogoutTimer(+resData.expiresIn * 1000)
+    this.authService.setLogoutTimer(+resData.expiresIn * 1000)
 
     const userToStore = new User(resData.email, resData.localId, resData.idToken, expireDate)
-    localStorage.setItem("userData", JSON.stringify(userToStore))
+    localStorage.setItem('userData', JSON.stringify(userToStore))
 
     return AuthActions.authenticateSuccess({
       email: resData.email,

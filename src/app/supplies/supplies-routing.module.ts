@@ -1,7 +1,7 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router"
-import { SuppliesEditComponent } from "./supplies-edit/supplies-edit.component";
-import { SuppliesComponent } from "./supplies.component";
+import { NgModule } from '@angular/core'
+import { RouterModule, Routes } from '@angular/router'
+import { SuppliesEditComponent } from './supplies-edit/supplies-edit.component'
+import { SuppliesComponent } from './supplies.component'
 
 const routes: Routes = [
   {

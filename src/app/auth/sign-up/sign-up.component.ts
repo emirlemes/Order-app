@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, ValidatorFn, Validators, } from '@angular/forms';
-import { AppState } from 'src/app/store/app.reducer';
-import { Store } from '@ngrx/store';
-import { signUpStart } from '../store/auth.actions';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Component } from '@angular/core'
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators, } from '@angular/forms'
+import { AppState } from 'src/app/store/app.reducer'
+import { Store } from '@ngrx/store'
+import { signUpStart } from '../store/auth.actions'
 
 type ValidationErrors = {
   [key: string]: any;
@@ -14,33 +15,28 @@ type ValidationErrors = {
   styleUrls: ['./sign-up.component.css']
 })
 
-export class SignUpComponent implements OnInit {
+export class SignUpComponent {
 
-  loginValid: boolean = true;
+  loginValid = true
 
-  email: FormControl = new FormControl('', [Validators.required, Validators.email])
-  password: FormControl = new FormControl('', [Validators.required, Validators.minLength(6), this.matchValidator("passwordAgain", true)])
-  passwordAgain: FormControl = new FormControl('', [Validators.required, Validators.minLength(6), this.matchValidator("password")])
-
-  signUpForm: FormGroup
+  signUpForm: FormGroup = this.fb.group({
+    'email': ['', [Validators.required, Validators.email]],
+    'password': ['', [Validators.required, Validators.minLength(6), this.matchValidator('passwordAgain', true)]],
+    'passwordAgain': ['', [Validators.required, Validators.minLength(6), this.matchValidator('password')]]
+  })
 
   constructor(private fb: FormBuilder, private store: Store<AppState>) {
-    this.signUpForm = this.fb.group({
-      email: this.email,
-      password: this.password,
-      passwordAgain: this.passwordAgain
-    })
   }
 
-  ngOnInit(): void {
-  }
+  get f(): { [key: string]: AbstractControl } { return this.signUpForm.controls }
 
   onSubmit() {
-    const email = this.signUpForm.value['email']
-    const password = this.signUpForm.value['password']
-    console.log(this.signUpForm);
-    console.log(email, password);
-    // this.store.dispatch(signUpStart({ email, password }))
+    if (!this.signUpForm) return
+
+    const { email } = this.signUpForm.value
+    const { password } = this.signUpForm.value
+
+    this.store.dispatch(signUpStart({ email, password }))
   }
 
   matchValidator(
@@ -50,19 +46,18 @@ export class SignUpComponent implements OnInit {
     return (control: AbstractControl):
       ValidationErrors | null => {
       if (control.parent && reverse) {
-        const c = (control.parent?.controls as any)[matchTo] as AbstractControl;
+        const c = (control.parent?.controls as any)[matchTo] as AbstractControl
         if (c) {
-          c.updateValueAndValidity();
+          c.updateValueAndValidity()
         }
-        return null;
+        return null
       }
       return !!control.parent &&
-        !!control.parent.value &&
-        control.value ===
+        !!control.parent.value && control.value ===
         (control.parent?.controls as any)[matchTo].value
         ? null
-        : { matching: true };
-    };
+        : { matching: true }
+    }
   }
 
 }

@@ -5,9 +5,8 @@ import { map, Observable, take } from 'rxjs'
 import { AppState } from '../store/app.reducer'
 
 @Injectable({ providedIn: 'root' })
-export class AuthGuard implements CanActivate {
+export class SignedInGuard implements CanActivate {
   constructor(private router: Router, private store: Store<AppState>) { }
-
   // route: ActivatedRouteSnapshot, state: RouterStateSnapshot
   canActivate(): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     return this.store.select(AppState => AppState.auth).pipe(
@@ -15,9 +14,10 @@ export class AuthGuard implements CanActivate {
       map((authState) => {
         const isAuth = !!authState.user
         if (isAuth) {
-          return isAuth
+          this.router.createUrlTree(['/dashboard'])
+          return false
         }
-        return this.router.createUrlTree(['/auth'])
+        return true
       }))
   }
 }

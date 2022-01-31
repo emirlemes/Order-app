@@ -1,38 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { AppState } from 'src/app/store/app.reducer';
+import { Component } from '@angular/core'
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { AppState } from 'src/app/store/app.reducer'
 import { Store } from '@ngrx/store'
-import { loginStart } from '../store/auth.actions';
+import { loginStart } from '../store/auth.actions'
 
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.css']
 })
-export class LogInComponent implements OnInit {
-  loginValid: boolean = true;
-  loginForm: FormGroup | null = null
+export class LogInComponent {
+  loginValid = true
 
-  email: FormControl = new FormControl('', Validators.required)
-  password: FormControl = new FormControl('', Validators.required)
+  loginForm: FormGroup = this.fb.group({
+    'email': ['', [Validators.required, Validators.email]],
+    'password': ['', [Validators.required, Validators.minLength(6)]]
+  })
 
   constructor(private fb: FormBuilder, private store: Store<AppState>) {
-    this.init()
   }
 
-  ngOnInit(): void {
-  }
+  get f(): { [key: string]: AbstractControl } { return this.loginForm.controls }
 
-  init() {
-    this.loginForm = this.fb.group({
-      email: this.email,
-      password: this.password
-    })
-  }
+  onSubmit() {
+    if (!this.loginForm) return
 
-  onSubmit(form: NgForm) {
-    const email = form.value['email']
-    const password = form.value['password']
+    const { email } = this.loginForm.value
+    const { password } = this.loginForm.value
     this.store.dispatch(loginStart({ email, password }))
   }
 }

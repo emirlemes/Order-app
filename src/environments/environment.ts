@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  api_key: ""
-};
+  api_key: 'AIzaSyD8TmAg22Ur02SbvBK0pNwnlDExT0e_AjE'
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

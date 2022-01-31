@@ -1,33 +1,19 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
+import { Component } from '@angular/core'
+import { logOutAction } from '../auth/store/auth.actions'
+import { AppState } from '../store/app.reducer'
+import { Store } from '@ngrx/store'
 
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css']
 })
-export class SidenavComponent implements OnInit {
-  @ViewChild('sidenav') sidenav: MatSidenav | undefined;
-  isExpanded = true;
-  showSubmenu: boolean = false;
-  isShowing = false;
-  showSubSubMenu: boolean = false;
+export class SidenavComponent {
+
+  constructor(private store: Store<AppState>) { }
 
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  mouseenter() {
-    if (!this.isExpanded) {
-      this.isShowing = true;
-    }
-  }
-
-  mouseleave() {
-    if (!this.isExpanded) {
-      this.isShowing = false;
-    }
+  onLogOut() {
+    this.store.dispatch(logOutAction())
   }
 }
