@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
-import { autoLogin } from './auth/store/auth.actions'
+import { autoLogin } from './core/auth/store/auth.actions'
 import { AppState } from './store/app.reducer'
 import { Store } from '@ngrx/store'
 import { map, Subscription } from 'rxjs'
@@ -7,7 +7,7 @@ import { map, Subscription } from 'rxjs'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
   constructor(private store: Store<AppState>) { }
