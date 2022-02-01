@@ -4,11 +4,11 @@ import { AppState } from '../../../store/app.reducer'
 import { Store } from '@ngrx/store'
 
 @Component({
-  selector: 'app-sidenav',
-  templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss']
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss']
 })
-export class SidenavComponent {
+export class NavbarComponent {
 
   constructor(private store: Store<AppState>) { }
 
@@ -16,4 +16,6 @@ export class SidenavComponent {
   onLogOut() {
     this.store.dispatch(logOutAction())
   }
+
+
 }

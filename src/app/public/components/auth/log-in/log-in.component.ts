@@ -2,7 +2,7 @@ import { Component } from '@angular/core'
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms'
 import { AppState } from 'src/app/store/app.reducer'
 import { Store } from '@ngrx/store'
-import { loginStart } from '../../../core/auth/store/auth.actions'
+import { loginStart } from '../../../../core/auth/store/auth.actions'
 
 @Component({
   selector: 'app-log-in',
@@ -19,6 +19,7 @@ export class LogInComponent {
 
   constructor(private fb: FormBuilder, private store: Store<AppState>) {
   }
+
 
   get f(): { [key: string]: AbstractControl } { return this.loginForm.controls }
 

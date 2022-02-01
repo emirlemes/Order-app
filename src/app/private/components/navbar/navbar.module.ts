@@ -3,21 +3,21 @@ import { RouterModule } from '@angular/router'
 import { FormsModule } from '@angular/forms'
 
 import { SharedModule } from '../../../shared/shared.module'
-import { DashboardRoutingModule } from './dashboard-routing.module'
-import { DashboardComponent } from './dashboard.component'
+import { NavbarRoutingModule } from './navbar-routing.module'
+import { NavbarComponent } from './navbar.component'
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    NavbarComponent
   ],
   imports: [
     RouterModule,
     FormsModule,
-    DashboardRoutingModule,
+    NavbarRoutingModule,
     SharedModule
   ]
 })
 
-export class DashboardModule {
+export class NavbarModule {
 
 }

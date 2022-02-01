@@ -3,7 +3,7 @@ import { Component } from '@angular/core'
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators, } from '@angular/forms'
 import { AppState } from 'src/app/store/app.reducer'
 import { Store } from '@ngrx/store'
-import { signUpStart } from '../../../core/auth/store/auth.actions'
+import { signUpStart } from '../../../../core/auth/store/auth.actions'
 
 type ValidationErrors = {
   [key: string]: any;

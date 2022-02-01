@@ -14,8 +14,7 @@ export class SignedInGuard implements CanActivate {
       map((authState) => {
         const isAuth = !!authState.user
         if (isAuth) {
-          this.router.createUrlTree(['/dashboard'])
-          return false
+          return this.router.createUrlTree(['private/dashboard'])
         }
         return true
       }))

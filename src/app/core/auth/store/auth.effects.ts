@@ -93,7 +93,7 @@ export class AuthEffects {
     ofType(AuthActions.authenticateSuccess),
     tap((authSuccessData) => {
       if (authSuccessData.redirect)
-        this.router.navigate(['/'])
+        this.router.navigate(['/private/dashboard'])
     })), { dispatch: false })
 
   authLogOutClear = createEffect(() => this.actions$.pipe(
@@ -101,7 +101,7 @@ export class AuthEffects {
     tap(() => {
       this.authService.clearLogoutTimer()
       localStorage.removeItem('userData')
-      this.router.navigate(['/auth'])
+      this.router.navigate(['/public/login'])
     })), { dispatch: false })
 
 

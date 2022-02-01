@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+
 import { SharedModule } from '../shared/shared.module'
+import { LogInComponent } from './components/auth/log-in/log-in.component'
+import { SignUpComponent } from './components/auth/sign-up/sign-up.component'
 
 import { PublicRoutingModule } from './public-routing.module'
 import { PublicComponent } from './public.component'
@@ -7,9 +11,13 @@ import { PublicComponent } from './public.component'
 
 @NgModule({
   declarations: [
-    PublicComponent
+    PublicComponent,
+    SignUpComponent,
+    LogInComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     PublicRoutingModule,
     SharedModule
   ]
