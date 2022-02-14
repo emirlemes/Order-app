@@ -32,7 +32,7 @@ jobs:
         cache-name: cache-node-modules
       with:
         path: node_modules 
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
     
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-
@@ -42,10 +42,10 @@ jobs:
     - name: Install Dependencies
       if: steps.cache-nodemodules.outputs.cache-hit != 'true'
       run: | 
-        npm ci
+        yarn
       
     - name: Build
-      run: npm run build -- --prod
+      run: yarn build -- --prod
       
     - name: Conventional Changelog Action
       uses: TriPSs/conventional-changelog-action@v3
