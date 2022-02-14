@@ -1,0 +1,28 @@
+<div class="card my-2" style="width: 300px;">
+  <img class="card-img-top" [src]="fruit?.imageUrl" alt="Card image cap">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-9">
+        <h5 class="card-title">{{fruit?.name}}</h5>
+      </div>
+      <div class="col-3">
+        <p class="card-text fw-bold">{{fruit?.price}} $</p>
+      </div>
+    </div>
+    <p class="card-text">{{fruit?.size}}{{fruit?.measuringUnit}}</p>
+    <div class="row">
+      <div class="col-2">
+        <button class="btn btn-primary" (click)="decrement()">-</button>
+      </div>
+      <div class="col-2">
+        <p class="my-2 mx-2">0</p>
+      </div>
+      <div class="col-2">
+        <button class="btn btn-primary" (click)="increment()">+</button>
+      </div>
+      <div class="col-6 d-flex justify-content-end">
+        <button class="btn btn-outline-secondary rounded-circle px-3">i</button>
+      </div>
+    </div>
+  </div>
+</div>

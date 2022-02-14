@@ -23,13 +23,13 @@ export class LogInComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.select(s => s.auth).pipe(map((data) => {
-      return data.authError
-    }), tap((errorMessage) => {
-      this.errorMessage = errorMessage ?? ''
-    })).subscribe()
+    this.store.select(s => s.auth)
+      .pipe(map((data) => {
+        return data.authError
+      }), tap((errorMessage) => {
+        this.errorMessage = errorMessage ?? ''
+      })).subscribe()
   }
-
 
   get f(): { [key: string]: AbstractControl } { return this.loginForm.controls }
 

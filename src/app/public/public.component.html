@@ -1,37 +1,40 @@
-<nav>
-  <div class="row">
-    <div class="col-md-2 col-xs-12 align-xs-center">
+<div class="container">
+  <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <div class="container-fluid">
       <a class="navbar-brand" href="#">Order app</a>
-    </div>
-    <div class="col-md-8 col-sm-12">
-      <ul>
-        <li>
-          <a routerLink="fruits" routerLinkActive="active-link">Fruit & Veg </a>
-        </li>
-        <li>
-          <a routerLink="meats" routerLinkActive="active-link">Meats</a>
-        </li>
-        <li>
-          <a routerLink="dairy" routerLinkActive="active-link">Dairy</a>
-        </li>
-        <li>
-          <a routerLink="snacks" routerLinkActive="active-link">Snacks</a>
-        </li>
-        <li><a routerLink="drinks" routerLinkActive="active-link">Drinks</a></li>
-      </ul>
-    </div>
-    <div class="col-md-2 col-sm-12 right-icons">
-      <div class="row ">
-        <div class="col-md-4 col-sm-4">
-          <i class="fas fa-shopping-cart"></i>
-        </div>
-        <div class="col-md-8 col-sm-4">
-          <a class="nav-link login" routerLink="login">Log In</a>
-        </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="fruits" routerLinkActive="active" href="#">Fruit & Vegetables</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="meats" routerLinkActive="active" href="#">Meats</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="dairy" routerLinkActive="active" href="#">Dairy</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="snacks" routerLinkActive="active" href="#">Snacks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="drinks" routerLinkActive="active" href="#">Drinks</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav ms-auto">
+          <li class="nav-item d-flex align-items-center px-4">
+            <i class="fas fa-shopping-cart"></i>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link login" routerLink="login">Log In</a>
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
-</nav>
-<div class="page-content">
+  </nav>
+  <hr />
   <router-outlet></router-outlet>
 </div>

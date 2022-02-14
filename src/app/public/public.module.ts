@@ -6,8 +6,9 @@ import { LogInComponent } from './components/auth/log-in/log-in.component'
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component'
 
 import { PublicRoutingModule } from './public-routing.module'
-import { PublicComponent } from './public.component';
+import { PublicComponent } from './public.component'
 import { FruitsComponent } from './components/fruits/fruits.component'
+import { ItemCardComponent } from './components/fruits/item-card/item-card.component'
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FruitsComponent } from './components/fruits/fruits.component'
     PublicComponent,
     SignUpComponent,
     LogInComponent,
-    FruitsComponent
+    FruitsComponent,
+    ItemCardComponent
   ],
   imports: [
     FormsModule,
