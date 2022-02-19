@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "order-app": {
+    "orderAppWeb": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:class": {
@@ -39,7 +39,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/order-app",
+            "outputPath": "dist/orderAppWeb",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -90,10 +90,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "order-app:build:production"
+              "browserTarget": "orderAppWeb:build:production"
             },
             "development": {
-              "browserTarget": "order-app:build:development"
+              "browserTarget": "orderAppWeb:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -101,7 +101,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "order-app:build"
+            "browserTarget": "orderAppWeb:build"
           }
         },
         "test": {
@@ -132,7 +132,7 @@
       }
     }
   },
-  "defaultProject": "order-app",
+  "defaultProject": "orderAppWeb",
   "cli": {
     "defaultCollection": "@angular-eslint/schematics"
   }

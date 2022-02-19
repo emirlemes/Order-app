@@ -1,5 +1,5 @@
 {
-  "name": "order-app",
+  "name": "orderAppWeb",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "deploy": "ng deploy --base-href=/order-app/"
+    "deploy": "ng deploy --base-href=/orderAppWeb/"
   },
   "private": true,
   "dependencies": {
